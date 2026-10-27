@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        <h1>Acompanhe sua evolução</h1>
+        <p class="lead">Registre suas métricas corporais, receba treinos e planos alimentares revisados por profissionais.</p>
+        <a class="btn btn-success" href="{% url 'contas:cadastro' %}">Começar agora</a>
+    </div>
+    <div class="col-md-4">
+        {% include 'includes/aside.html' %}
+    </div>
+</div>
+{% endblock %}
