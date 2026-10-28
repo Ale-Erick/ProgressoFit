@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Evolução - ProgressoFit{% endblock %}
+{% block content %}
+<h2>Evolução corporal</h2>
+<a href="{% url 'metricas:registrar' %}" class="btn btn-success mb-3">Registrar nova medição</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Data</th>
+            <th>Peso (kg)</th>
+            <th>Altura (m)</th>
+            <th>% gordura</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for metrica in metricas %}
+        <tr>
+            <td>{{ metrica.data|date:"d/m/Y" }}</td>
+            <td>{{ metrica.peso }}</td>
+            <td>{{ metrica.altura }}</td>
+            <td>{{ metrica.percentual_gordura|default_if_none:"-" }}</td>
+            <td><a href="{% url 'metricas:detalhe' metrica.id %}" class="btn btn-sm btn-outline-info">Detalhes</a></td>
+        </tr>
+    {% empty %}
+        <tr><td colspan="5">Nenhuma medição cadastrada.</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
