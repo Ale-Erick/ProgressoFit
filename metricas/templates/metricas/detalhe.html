@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Detalhes da Medição - ProgressoFit{% endblock %}
+{% block content %}
+<h2>Medição de {{ metrica.data|date:"d/m/Y" }}</h2>
+<div class="card p-3">
+    <p><strong>Usuário:</strong> {{ metrica.user.username }}</p>
+    <p><strong>Peso:</strong> {{ metrica.peso }} kg</p>
+    <p><strong>Altura:</strong> {{ metrica.altura }} m</p>
+    <p><strong>% de gordura:</strong> {{ metrica.percentual_gordura|default_if_none:"-" }}</p>
+    <p><strong>Cintura:</strong> {{ metrica.cintura|default_if_none:"-" }} cm</p>
+</div>
+<a href="{% url 'metricas:evolucao' %}" class="btn btn-secondary mt-3">Voltar</a>
+{% endblock %}
