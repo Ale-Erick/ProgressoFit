@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Painel do Especialista - ProgressoFit{% endblock %}
+{% block content %}
+<h2 class="mb-2">Painel de Validação</h2>
+<p class="text-secondary mb-4">Acompanhe e valide os planos alimentares submetidos pelos alunos.</p>
+
+{% for plano in planos %}
+    <div class="card p-3 mb-3">
+        <div class="d-flex justify-content-between align-items-center">
+            <h5>{{ plano.titulo }} - <small class="text-secondary">Aluno: {{ plano.user.username }}</small></h5>
+            <span class="badge bg-warning text-dark">{{ plano.status }}</span>
+        </div>
+        <p class="my-2">{{ plano.descricao }}</p>
+        <div class="d-flex gap-2 mt-2">
+            <button class="btn btn-sm btn-success" disabled>Aprovar</button>
+            <button class="btn btn-sm btn-outline-warning" disabled>Ajustar</button>
+            <button class="btn btn-sm btn-outline-danger" disabled>Rejeitar</button>
+        </div>
+    </div>
+{% empty %}
+    <p>Nenhum plano pendente de validação.</p>
+{% endfor %}
+{% endblock %}
