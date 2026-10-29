@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Nutrição - ProgressoFit{% endblock %}
+{% block content %}
+<h2 class="mb-4">Planos Alimentares</h2>
+<div class="row">
+    {% for plano in planos %}
+        <div class="col-md-6 mb-3">
+            <div class="card p-3">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <h5 class="mb-0">{{ plano.titulo }}</h5>
+                    <span class="badge bg-info">{{ plano.status }}</span>
+                </div>
+                <p>{{ plano.descricao }}</p>
+                <small class="text-secondary">Acompanhamento: {{ plano.especialista|default:"Pendente de atribuição" }}</small>
+            </div>
+        </div>
+    {% empty %}
+        <div class="col-12"><p>Nenhum plano alimentar cadastrado.</p></div>
+    {% endfor %}
+</div>
+{% endblock %}
